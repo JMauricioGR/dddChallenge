@@ -21,7 +21,7 @@ public class Food extends Entity<FoodId> {
         this.price = price;
     }
 
-    public void updatePrice(Price price){
+    public void updatePrice(FoodId foodId, Price price){
         this.price = Objects.requireNonNull(price);
     }
 

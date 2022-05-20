@@ -5,6 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 
 import com.sofkaU.ddd.challenge.sale.events.*;
+import com.sofkaU.ddd.challenge.sale.events.PetShopName;
 import com.sofkaU.ddd.challenge.sale.values.*;
 
 import java.util.List;
@@ -13,13 +14,13 @@ import java.util.Optional;
 import java.util.Set;
 
 public class Sale extends AggregateEvent<SaleId> {
-    protected PetShopName petShopName;
+    protected com.sofkaU.ddd.challenge.sale.values.PetShopName petShopName;
     protected Set<Food> foods;
     protected Set<Accessories> accessories;
     protected Set<Seller> sellers;
 
 
-    public Sale(SaleId saleId, PetShopName petShopName) {
+    public Sale(SaleId saleId, com.sofkaU.ddd.challenge.sale.values.PetShopName petShopName) {
         super(saleId);
         appendChange(new SaleCreated(petShopName)).apply();
     }
@@ -35,8 +36,8 @@ public class Sale extends AggregateEvent<SaleId> {
         return sale;
     }
 
-    public void updatePetShopName(PetShopName petShopName){
-        appendChange(new PetNameUpdated(petShopName)).apply();
+    public void updatePetShopName(com.sofkaU.ddd.challenge.sale.values.PetShopName petShopName){
+        appendChange(new PetShopName(petShopName)).apply();
     }
 
     public void addFood(FoodId foodId, Brand brand, Weight weight, Price price){
@@ -87,7 +88,7 @@ public class Sale extends AggregateEvent<SaleId> {
     protected Optional<Accessories> accessoryById(AccessoryId accessoryId){
         return accessories.stream()
                 .filter(accessory -> accessory.identity().equals(accessoryId))
-                .findFirst()
+                .findFirst();
     }
 
     protected Optional<Seller> sellerById(SellerId sellerId){
@@ -96,7 +97,7 @@ public class Sale extends AggregateEvent<SaleId> {
                 .findFirst();
     }
 
-    public PetShopName getPetShopName() {     return petShopName;
+    public com.sofkaU.ddd.challenge.sale.values.PetShopName getPetShopName() {     return petShopName;
     }
 
     public Set<Food> getFoods() {

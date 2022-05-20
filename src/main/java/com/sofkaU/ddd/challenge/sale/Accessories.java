@@ -21,7 +21,7 @@ public class Accessories extends Entity<AccessoryId> {
         this.price = price;
     }
 
-    public void updateAccessoryPrice(Price price){
+    public void updateAccessoryPrice(AccessoryId accessoryId, Price price){
         this.price = Objects.requireNonNull(price);
     }
 

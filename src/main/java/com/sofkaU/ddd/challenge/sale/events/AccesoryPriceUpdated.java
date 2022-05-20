@@ -5,8 +5,8 @@ import com.sofkaU.ddd.challenge.sale.values.AccessoryId;
 import com.sofkaU.ddd.challenge.sale.values.Price;
 
 public class AccesoryPriceUpdated extends DomainEvent {
-    private final AccessoryId accessoryId;
-    private final Price price;
+    private AccessoryId accessoryId;
+    private Price price;
 
     public AccesoryPriceUpdated(AccessoryId accessoryId, Price price) {
         super("sofkau.sales.accessorypriceupdated");
@@ -18,7 +18,7 @@ public class AccesoryPriceUpdated extends DomainEvent {
         return accessoryId;
     }
 
-    public Price getPrice() {
+    public Price getAccesoryPrice() {
         return price;
     }
 }

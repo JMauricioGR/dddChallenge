@@ -16,7 +16,7 @@ public class Seller extends Entity<SellerId> {
         this.sellerName = sellerName;
     }
 
-    public void updateSellerName(SellerName sellerName){
+    public void updateSellerName(SellerId sellerId, SellerName sellerName){
         this.sellerName = Objects.requireNonNull(sellerName);
     }
 
