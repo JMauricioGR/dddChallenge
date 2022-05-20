@@ -14,8 +14,9 @@ public class Employee extends Entity<EmployeeId> {
         this.employeeName = employeeName;
     }
 
-    public void UpdateEmployeeName(EmployeeName employeeName){
+    public void UpdateEmployeeName(EmployeeId employeeId, EmployeeName employeeName){
         this.employeeName = Objects.requireNonNull(employeeName);
+        this.entityId = Objects.requireNonNull(employeeId);
     }
 
     public EmployeeName getEmployeeName() {

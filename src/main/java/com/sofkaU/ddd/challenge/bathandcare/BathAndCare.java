@@ -34,9 +34,10 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
         return bathAndCare;
     }
 
-    public void UpdatePetShopName(PetShopName petShopName){
+    public void UpdatePetShopName(BathAndCareId bathAndCareId, PetShopName petShopName){
         Objects.requireNonNull(petShopName);
-        appendChange(new PetShopNameUpdated(petShopName)).apply();
+        Objects.requireNonNull(bathAndCareId);
+        appendChange(new PetShopNameUpdated(bathAndCareId, petShopName)).apply();
     }
 
     public void AddClient(ClientId clientId, OwnerName ownerName, PetName petName){

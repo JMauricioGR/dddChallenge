@@ -27,19 +27,19 @@ public class UpdateBathAndCare extends EventChange {
         apply((EmployeeNameUpdated event) ->{
             var employeeName = bathAndCare.employeeById(event.getEmployeeId())
                     .orElseThrow(() -> new IllegalArgumentException("Employee doesn´t found"));
-            employeeName.UpdateEmployeeName(event.getEmployeeName());
+            employeeName.UpdateEmployeeName(event.getEmployeeId(), event.getEmployeeName());
         });
 
         apply((OwnerNameUpdated event) -> {
             var ownerName = bathAndCare.clientById(event.getClientId())
                     .orElseThrow(()-> new IllegalArgumentException("Client doesn't found"));
-            ownerName.UpdateOwnerName(event.getOwnerName());
+            ownerName.UpdateOwnerName(event.getClientId(), event.getOwnerName());
         });
 
         apply((PetNameUpdated event) -> {
             var petName = bathAndCare.clientById(event.getClientId())
                     .orElseThrow(()-> new IllegalArgumentException("Client doesn't found"));
-            petName.UpdatePetName(event.getPetName());
+            petName.UpdatePetName(event.getClientId(), event.getPetName());
         });
 
         apply((PetShopNameUpdated event) -> {
@@ -49,7 +49,7 @@ public class UpdateBathAndCare extends EventChange {
         apply((PriceUpdated event) -> {
             var priceUpdt = bathAndCare.serviceById(event.getServiceId())
                     .orElseThrow(()-> new IllegalArgumentException("Service doesn't found"));
-            priceUpdt.UpdatePrice(event.getPrice());
+            priceUpdt.UpdatePrice(event.getServiceId(), event.getPrice());
         });
 
         apply((ServiceAdded event) -> {
@@ -68,13 +68,13 @@ public class UpdateBathAndCare extends EventChange {
         apply((ServiceNameUpdated event) -> {
             var serviceName = bathAndCare.serviceById(event.getServiceId())
                     .orElseThrow(()-> new IllegalArgumentException("Service doesn't found"));
-            serviceName.UpdateServiceName(event.getServiceName());
+            serviceName.UpdateServiceName(event.getServiceId(), event.getServiceName());
         });
 
         apply((ServiceTimeUpdated event) ->{
             var serviceTime = bathAndCare.serviceById(event.getServiceId())
                     .orElseThrow(()-> new IllegalArgumentException("Service doesn't found"));
-            serviceTime.UpdateServiceTime(event.getServiceTime());
+            serviceTime.UpdateServiceTime(event.getServiceId(), event.getServiceTime());
         });
 
     }

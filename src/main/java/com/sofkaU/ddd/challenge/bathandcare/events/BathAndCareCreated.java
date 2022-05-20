@@ -8,9 +8,9 @@ import com.sofkaU.ddd.challenge.bathandcare.values.ServiceId;
 
 public class BathAndCareCreated extends DomainEvent {
     private final PetShopName petShopName;
-    private final ClientId clientId;
-    private final ServiceId serviceId;
-    private final EmployeeId employeeId;
+    private ClientId clientId;
+    private ServiceId serviceId;
+    private EmployeeId employeeId;
 
     public BathAndCareCreated(PetShopName petShopName) {
         super("sofkau.bathandcare.bathancarecreated");

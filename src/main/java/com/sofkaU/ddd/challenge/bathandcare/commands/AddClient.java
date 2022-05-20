@@ -3,22 +3,29 @@ package com.sofkaU.ddd.challenge.bathandcare.commands;
 import co.com.sofka.domain.generic.Command;
 import com.sofkaU.ddd.challenge.bathandcare.values.ClientId;
 import com.sofkaU.ddd.challenge.bathandcare.values.OwnerName;
+import com.sofkaU.ddd.challenge.bathandcare.values.PetName;
 
-public class UpdateOwnerName extends Command {
+public class AddClient extends Command {
 
-    protected final OwnerName ownerName;
     protected final ClientId clientId;
+    protected final OwnerName ownerName;
+    protected final PetName petName;
 
-    public UpdateOwnerName(ClientId clientId, OwnerName ownerName){
+    public AddClient(ClientId clientId, OwnerName ownerName, PetName petName){
         this.clientId = clientId;
         this.ownerName = ownerName;
+        this.petName = petName;
+    }
+
+    public ClientId getClientId() {
+        return clientId;
     }
 
     public OwnerName getOwnerName() {
         return ownerName;
     }
 
-    public ClientId getClientId() {
-        return clientId;
+    public PetName getPetName() {
+        return petName;
     }
 }
