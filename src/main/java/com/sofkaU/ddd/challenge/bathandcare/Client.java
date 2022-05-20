@@ -26,6 +26,10 @@ public class Client extends Entity<ClientId> {
         this.petName = Objects.requireNonNull(petName);
     }
 
+    public void UpdateOwnerName(OwnerName ownerName){
+        this.ownerName = Objects.requireNonNull(ownerName);
+    }
+
     public PetName getPetName() {
         return petName;
     }

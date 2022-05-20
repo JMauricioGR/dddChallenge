@@ -60,34 +60,40 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
         appendChange(new EmployeeAdded(entityId, employeeName)).apply();
     }
 
-    public void UpdateOwnerName(OwnerName ownerName){
+    public void UpdateOwnerName(ClientId clientId,OwnerName ownerName){
         Objects.requireNonNull(ownerName);
-        appendChange(new OwnerNameUpdated(ownerName)).apply();
+        Objects.requireNonNull(clientId);
+        appendChange(new OwnerNameUpdated(clientId, ownerName)).apply();
     }
 
-    public void UpdatePetName(PetName petName){
+    public void UpdatePetName(ClientId clientId, PetName petName){
         Objects.requireNonNull(petName);
-        appendChange(new PetNameUpdated(petName)).apply();
+        Objects.requireNonNull(clientId);
+        appendChange(new PetNameUpdated(clientId, petName)).apply();
     }
 
-    public void UpdateServiceName(ServiceName serviceName){
+    public void UpdateServiceName(ServiceId serviceId,ServiceName serviceName){
         Objects.requireNonNull(serviceName);
-        appendChange(new ServiceNameUpdated(serviceName)).apply();
+        Objects.requireNonNull(serviceId);
+        appendChange(new ServiceNameUpdated(serviceId, serviceName)).apply();
     }
 
-    public void UpdateServiceTime(ServiceTime serviceTime){
+    public void UpdateServiceTime(ServiceId serviceId, ServiceTime serviceTime){
         Objects.requireNonNull(serviceTime);
-        appendChange(new ServiceTimeUpdated(serviceTime)).apply();
+        Objects.requireNonNull(serviceId);
+        appendChange(new ServiceTimeUpdated(serviceId, serviceTime)).apply();
     }
 
-    public void UpdatePrice(Price price){
+    public void UpdatePrice(ServiceId serviceId, Price price){
         Objects.requireNonNull(price);
-        appendChange(new PriceUpdated(price)).apply();
+        Objects.requireNonNull(serviceId);
+        appendChange(new PriceUpdated(serviceId, price)).apply();
     }
 
-    public void UpdateEmployeeName(EmployeeName employeeName){
+    public void UpdateEmployeeName(EmployeeId employeeId, EmployeeName employeeName){
         Objects.requireNonNull(employeeName);
-        appendChange(new EmployeeNameUpdated(employeeName)).apply();
+        Objects.requireNonNull(employeeId);
+        appendChange(new EmployeeNameUpdated(employeeId, employeeName)).apply();
     }
 
     protected Optional<Client> clientById(ClientId clientId){
@@ -113,5 +119,17 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
 
     public PetShopName getPetShopName() {
         return petShopName;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public Set<Service> getServices() {
+        return services;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
     }
 }
