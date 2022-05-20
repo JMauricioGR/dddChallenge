@@ -10,7 +10,7 @@ public class EmployeeName implements ValueObject<String> {
     public EmployeeName(String value) {
         this.value = Objects.requireNonNull(value);
         if (this.value.isBlank()){
-            throw new IllegalArgumentException("Pet name is empty");
+            throw new IllegalArgumentException("Employee name is empty");
         }
     }
 
