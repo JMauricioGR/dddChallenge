@@ -1,19 +1,18 @@
-package com.sofkaU.ddd.challenge.bathandcare.values;
+package com.sofkaU.ddd.challenge.sale.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Price implements ValueObject<String> {
+public class SellerName implements ValueObject<String> {
     private final String value;
 
-    public Price(String value) {
+    public SellerName(String value) {
         this.value = Objects.requireNonNull(value);
         if (this.value.isBlank()){
-            throw new IllegalArgumentException("Pet name is empty");
+            throw new IllegalArgumentException("Seller name is empty");
         }
     }
-
 
     public String value() {
         return value;
@@ -23,8 +22,8 @@ public class Price implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Price price = (Price) o;
-        return Objects.equals(value, price.value);
+        SellerName that = (SellerName) o;
+        return Objects.equals(value, that.value);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.sofkaU.ddd.challenge.bathandcare.commands;
 
 import co.com.sofka.domain.generic.Command;
 import com.sofkaU.ddd.challenge.bathandcare.values.ClientId;
+import com.sofkaU.ddd.challenge.bathandcare.values.OwnerName;
 import com.sofkaU.ddd.challenge.bathandcare.values.PetName;
 
 public class UpdatePetName extends Command {

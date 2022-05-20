@@ -16,7 +16,7 @@ public class EmployeeName implements ValueObject<String> {
 
 
     public String value() {
-        return null;
+        return value;
     }
 
     @Override

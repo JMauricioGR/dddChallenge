@@ -1,4 +1,4 @@
-package com.sofkaU.ddd.challenge.bathandcare.values;
+package com.sofkaU.ddd.challenge.sale.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
@@ -10,10 +10,9 @@ public class Price implements ValueObject<String> {
     public Price(String value) {
         this.value = Objects.requireNonNull(value);
         if (this.value.isBlank()){
-            throw new IllegalArgumentException("Pet name is empty");
+            throw new IllegalArgumentException("Price is empty");
         }
     }
-
 
     public String value() {
         return value;
