@@ -25,6 +25,6 @@ public class AddSellerUseCase extends UseCase<RequestCommand<AddSeller>, Respons
 //        var command = addSellerRequestCommand.getCommand();
 //        var seller = new Seller(command.getEntityId(), command.getSellerName());
 //
-//        emit().onResponse(new ResponseEvents(seller.));
+//        emit().onResponse(new ResponseEvents(seller.getUncommittedchange()));
     }
 }
