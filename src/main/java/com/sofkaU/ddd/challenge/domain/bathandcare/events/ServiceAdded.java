@@ -1,19 +1,18 @@
 package com.sofkaU.ddd.challenge.domain.bathandcare.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import com.sofkaU.ddd.challenge.domain.bathandcare.values.Price;
-import com.sofkaU.ddd.challenge.domain.bathandcare.values.ServiceId;
-import com.sofkaU.ddd.challenge.domain.bathandcare.values.ServiceName;
-import com.sofkaU.ddd.challenge.domain.bathandcare.values.ServiceTime;
+import com.sofkaU.ddd.challenge.domain.bathandcare.values.*;
 
 public class ServiceAdded extends DomainEvent {
+    private final BathAndCareId bathAndCareId;
     private final ServiceId entityId;
     private final ServiceName serviceName;
     private final ServiceTime serviceTime;
     private final Price price;
 
-    public ServiceAdded(ServiceId entityId, ServiceName serviceName, ServiceTime serviceTime, Price price) {
+    public ServiceAdded(BathAndCareId bathAndCareId,ServiceId entityId, ServiceName serviceName, ServiceTime serviceTime, Price price) {
         super("sofka.bathandcare.serviceadded");
+        this.bathAndCareId = bathAndCareId;
         this.entityId = entityId;
         this.serviceName = serviceName;
         this.serviceTime = serviceTime;

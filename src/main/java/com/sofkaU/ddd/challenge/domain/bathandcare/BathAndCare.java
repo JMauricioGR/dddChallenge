@@ -23,8 +23,8 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
 
     }
 
-    public BathAndCare(BathAndCareId entityId) {
-        super(entityId);
+    public BathAndCare(BathAndCareId bathAndCareId) {
+        super(bathAndCareId);
         subscribe(new UpdateBathAndCare(this));
     }
 
@@ -34,25 +34,27 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
         return bathAndCare;
     }
 
-    public void UpdatePetShopName(BathAndCareId bathAndCareId, PetShopName petShopName){
+    public void UpdatePetShopName(/*BathAndCareId bathAndCareId, */PetShopName petShopName){
         Objects.requireNonNull(petShopName);
-        Objects.requireNonNull(bathAndCareId);
-        appendChange(new PetShopNameUpdated(bathAndCareId, petShopName)).apply();
+        /*Objects.requireNonNull(bathAndCareId);*/
+        appendChange(new PetShopNameUpdated(/*bathAndCareId,*/ petShopName)).apply();
     }
 
-    public void AddClient(ClientId clientId, OwnerName ownerName, PetName petName){
+    public void AddClient(BathAndCareId bathAndCareId, ClientId clientId, OwnerName ownerName, PetName petName){
+        Objects.requireNonNull(bathAndCareId);
         Objects.requireNonNull(clientId);
         Objects.requireNonNull(ownerName);
         Objects.requireNonNull(petName);
-        appendChange( new ClientAdded(clientId, ownerName, petName)).apply();
+        appendChange( new ClientAdded(bathAndCareId,clientId, ownerName, petName)).apply();
     }
 
-    public void AddService(ServiceId entityId, ServiceName serviceName, ServiceTime serviceTime, Price price){
+    public void AddService(BathAndCareId bathAndCareId, ServiceId entityId, ServiceName serviceName, ServiceTime serviceTime, Price price){
+        Objects.requireNonNull(bathAndCareId);
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(serviceName);
         Objects.requireNonNull(serviceTime);
         Objects.requireNonNull(price);
-        appendChange(new ServiceAdded(entityId, serviceName, serviceTime, price)).apply();
+        appendChange(new ServiceAdded(bathAndCareId,entityId, serviceName, serviceTime, price)).apply();
     }
 
     public void AddEmployee(EmployeeId entityId, EmployeeName employeeName){

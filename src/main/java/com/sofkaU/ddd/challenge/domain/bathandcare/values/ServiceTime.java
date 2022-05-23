@@ -16,7 +16,7 @@ public class ServiceTime implements ValueObject<String> {
 
 
     public String value() {
-        return null;
+        return value;
     }
 
     @Override

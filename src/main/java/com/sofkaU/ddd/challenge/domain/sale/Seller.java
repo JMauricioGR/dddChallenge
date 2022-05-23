@@ -8,11 +8,10 @@ import java.util.Objects;
 
 public class Seller extends Entity<SellerId> {
 
-
     private SellerName sellerName;
 
-    public Seller(SellerId entityId, SellerName sellerName) {
-        super(entityId);
+    public Seller(SellerId sellerId, SellerName sellerName) {
+        super(sellerId);
         this.sellerName = sellerName;
     }
 
@@ -23,4 +22,5 @@ public class Seller extends Entity<SellerId> {
     public SellerName getSellerName() {
         return sellerName;
     }
+
 }

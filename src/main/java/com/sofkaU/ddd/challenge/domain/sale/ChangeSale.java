@@ -56,10 +56,7 @@ public class ChangeSale extends EventChange {
             if (seller == 0){
                 throw new IllegalArgumentException("Seller data is missing");
             }
-            sale.sellers.add(new Seller(
-                    event.getSellerId(),
-                    event.getSellerName()
-            ));
+            sale.sellers.add(new Seller(event.getSellerId(), event.getSellerName()));
         });
 
         apply((SellerNameUpdated event)->{

@@ -1,8 +1,11 @@
 package com.sofkaU.ddd.challenge.domain.bathandcare.commands;
 
 import co.com.sofka.domain.generic.Command;
+import co.com.sofka.domain.generic.DomainEvent;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.EmployeeId;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.EmployeeName;
+
+import java.util.List;
 
 public class UpdateEmployeeName extends Command {
 

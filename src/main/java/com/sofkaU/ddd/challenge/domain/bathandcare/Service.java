@@ -20,22 +20,27 @@ public class Service extends Entity<ServiceId> {
         this.price = price;
     }
 
-    public void UpdateServiceName(ServiceId serviceId, ServiceName serviceName){
+    public void UpdateServiceName(ServiceName serviceName){
         this.serviceName = Objects.requireNonNull(serviceName);
-        this.entityId = Objects.requireNonNull(serviceId);
     }
 
-    public void UpdateServiceTime(ServiceId serviceId, ServiceTime serviceTime){
+    public void UpdateServiceTime(ServiceTime serviceTime){
         this.serviceTime = Objects.requireNonNull(serviceTime);
-        this.entityId = Objects.requireNonNull(serviceId);
     }
 
-    public void UpdatePrice(ServiceId serviceId, Price price){
+    public void UpdatePrice( Price price){
         this.price = Objects.requireNonNull(price);
-        this.entityId = Objects.requireNonNull(serviceId);
     }
 
-    public Service(ServiceId entityId) {
-        super(entityId);
+    public ServiceName serviceName() {
+        return serviceName;
+    }
+
+    public ServiceTime serviceTime() {
+        return serviceTime;
+    }
+
+    public Price price() {
+        return price;
     }
 }
