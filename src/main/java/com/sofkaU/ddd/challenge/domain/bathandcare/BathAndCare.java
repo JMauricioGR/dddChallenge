@@ -18,7 +18,7 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
     protected PetShopName petShopName;
 
     public BathAndCare(BathAndCareId bathAndCareId, PetShopName petShopName){
-        super(bathAndCareId);
+        this(bathAndCareId);
         appendChange(new BathAndCareCreated(petShopName)).apply();
 
     }
@@ -34,10 +34,10 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
         return bathAndCare;
     }
 
-    public void UpdatePetShopName(/*BathAndCareId bathAndCareId, */PetShopName petShopName){
+    public void UpdatePetShopName(PetShopName petShopName){
         Objects.requireNonNull(petShopName);
-        /*Objects.requireNonNull(bathAndCareId);*/
-        appendChange(new PetShopNameUpdated(/*bathAndCareId,*/ petShopName)).apply();
+
+        appendChange(new PetShopNameUpdated(petShopName)).apply();
     }
 
     public void AddClient(BathAndCareId bathAndCareId, ClientId clientId, OwnerName ownerName, PetName petName){
@@ -57,10 +57,11 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
         appendChange(new ServiceAdded(bathAndCareId,entityId, serviceName, serviceTime, price)).apply();
     }
 
-    public void AddEmployee(EmployeeId entityId, EmployeeName employeeName){
+    public void AddEmployee(BathAndCareId bathAndCareId, EmployeeId entityId, EmployeeName employeeName){
+        Objects.requireNonNull(bathAndCareId);
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(employeeName);
-        appendChange(new EmployeeAdded(entityId, employeeName)).apply();
+        appendChange(new EmployeeAdded(bathAndCareId, entityId, employeeName)).apply();
     }
 
     public void UpdateOwnerName(ClientId clientId,OwnerName ownerName){

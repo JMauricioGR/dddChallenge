@@ -5,15 +5,15 @@ import com.sofkaU.ddd.challenge.domain.bathandcare.values.*;
 
 public class AddService extends Command {
 
-    private final BathAndCareId bathAndCareId;
-    protected final ServiceId entityId;
+    protected final BathAndCareId bathAndCareId;
+    protected final ServiceId serviceId;
     protected final ServiceName serviceName;
     protected final ServiceTime serviceTime;
     protected final Price price;
 
-    public AddService(BathAndCareId bathAndCareId, ServiceId entityId, ServiceName serviceName, ServiceTime serviceTime, Price price){
+    public AddService(BathAndCareId bathAndCareId, ServiceId serviceId, ServiceName serviceName, ServiceTime serviceTime, Price price){
         this.bathAndCareId = bathAndCareId;
-        this.entityId = entityId;
+        this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceTime = serviceTime;
         this.price = price;
@@ -24,7 +24,7 @@ public class AddService extends Command {
     }
 
     public ServiceId getEntityId() {
-        return entityId;
+        return serviceId;
     }
 
     public ServiceName getServiceName() {

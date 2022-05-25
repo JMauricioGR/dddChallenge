@@ -9,12 +9,12 @@ import com.sofkaU.ddd.challenge.domain.bathandcare.values.ServiceTime;
 import java.util.Objects;
 
 public class Service extends Entity<ServiceId> {
-    private ServiceName serviceName;
-    private ServiceTime serviceTime;
-    private Price price;
+    protected ServiceName serviceName;
+    protected ServiceTime serviceTime;
+    protected Price price;
 
-    public Service(ServiceId entityId, ServiceName serviceName, ServiceTime serviceTime, Price price){
-        super(entityId);
+    public Service(ServiceId serviceId, ServiceName serviceName, ServiceTime serviceTime, Price price){
+        super(serviceId);
         this.serviceName = serviceName;
         this.serviceTime = serviceTime;
         this.price = price;
@@ -42,5 +42,15 @@ public class Service extends Entity<ServiceId> {
 
     public Price price() {
         return price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

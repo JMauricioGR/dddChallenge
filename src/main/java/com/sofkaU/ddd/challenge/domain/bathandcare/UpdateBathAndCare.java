@@ -3,10 +3,14 @@ package com.sofkaU.ddd.challenge.domain.bathandcare;
 import co.com.sofka.domain.generic.EventChange;
 import com.sofkaU.ddd.challenge.domain.bathandcare.events.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class UpdateBathAndCare extends EventChange {
     public UpdateBathAndCare(BathAndCare bathAndCare) {
         apply((BathAndCareCreated event) ->{
             bathAndCare.petShopName = event.getPetShopName();
+            bathAndCare.services = new HashSet<>();
         });
 
         apply((EmployeeAdded event) ->{
@@ -49,10 +53,7 @@ public class UpdateBathAndCare extends EventChange {
         });
 
         apply((ServiceAdded event) -> {
-            var serviceAdd = bathAndCare.services.size();
-            if (serviceAdd == 0){
-                throw  new IllegalArgumentException("No data to save");
-            }
+
             bathAndCare.services.add(new Service(
                     event.getEntityId(),
                     event.getServiceName(),

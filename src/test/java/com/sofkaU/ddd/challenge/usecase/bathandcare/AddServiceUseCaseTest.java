@@ -10,14 +10,17 @@ import com.sofkaU.ddd.challenge.domain.bathandcare.events.ServiceAdded;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import static org.mockito.Mockito.when;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@ExtendWith(MockitoExtension.class)
 class AddServiceUseCaseTest {
 
     @Mock
@@ -27,7 +30,7 @@ class AddServiceUseCaseTest {
     @Test
     void addService(){
         var bathandcareid = BathAndCareId.of("12");
-        var serviceId = ServiceId.of("2");
+        var serviceId = new ServiceId("1");
         var serviceName = new ServiceName("Bathing");
         var serviceTime = new ServiceTime("1 hour");
         var price = new Price("$65.000");
@@ -36,7 +39,10 @@ class AddServiceUseCaseTest {
 
         var aggregateCreated = new BathAndCareCreated(new PetShopName("Best Pet Shop"));
         aggregateCreated.setAggregateRootId("12");
-        when(repository.getEventsBy("12")).thenReturn(List.of(aggregateCreated));
+
+        /*var entityCreated = new ServiceAdded(BathAndCareId.of("12"),ServiceId.of("12"),new ServiceName("Bathing"),new ServiceTime("1 hour"),new Price("$65.000"));
+        entityCreated.setAggregateRootId("12");*/
+        when(repository.getEventsBy("12")).thenReturn(List.of(aggregateCreated/*, entityCreated*/));
 
         List<DomainEvent> events = UseCaseHandler
                 .getInstance()
