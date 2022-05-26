@@ -94,10 +94,11 @@ public class BathAndCare extends AggregateEvent<BathAndCareId> {
         appendChange(new PriceUpdated(serviceId, price)).apply();
     }
 
-    public void UpdateEmployeeName(EmployeeId employeeId, EmployeeName employeeName){
+    public void UpdateEmployeeName(BathAndCareId bathAndCareId, EmployeeId employeeId, EmployeeName employeeName){
+        Objects.requireNonNull(bathAndCareId);
         Objects.requireNonNull(employeeName);
         Objects.requireNonNull(employeeId);
-        appendChange(new EmployeeNameUpdated(employeeId, employeeName)).apply();
+        appendChange(new EmployeeNameUpdated(bathAndCareId, employeeId, employeeName)).apply();
     }
 
     protected Optional<Client> clientById(ClientId clientId){
