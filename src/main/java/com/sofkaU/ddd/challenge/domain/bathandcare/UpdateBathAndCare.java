@@ -11,13 +11,11 @@ public class UpdateBathAndCare extends EventChange {
         apply((BathAndCareCreated event) ->{
             bathAndCare.petShopName = event.getPetShopName();
             bathAndCare.services = new HashSet<>();
+            bathAndCare.clients = new HashSet<>();
+            bathAndCare.employees = new HashSet<>();
         });
 
         apply((EmployeeAdded event) ->{
-            var employees = bathAndCare.employees.size();
-            if(employees == 0 ){
-                throw new IllegalArgumentException("No data to save");
-            }
             bathAndCare.employees.add(new Employee(
                     event.getEntityId(),
                     event.getEmployeeName()
@@ -72,6 +70,14 @@ public class UpdateBathAndCare extends EventChange {
             var serviceTime = bathAndCare.serviceById(event.getServiceId())
                     .orElseThrow(()-> new IllegalArgumentException("Service doesn't found"));
             serviceTime.UpdateServiceTime(event.getServiceTime());
+        });
+
+        apply((ClientAdded event) -> {
+            bathAndCare.clients.add(new Client(
+                    event.getClientId(),
+                    event.getOwnerName(),
+                    event.getPetName()
+            ));
         });
 
     }

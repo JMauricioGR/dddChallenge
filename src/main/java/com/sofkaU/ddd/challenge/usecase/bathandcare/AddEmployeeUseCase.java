@@ -14,7 +14,6 @@ public class AddEmployeeUseCase extends UseCase<RequestCommand<AddEmployee>, Res
         var command = addEmployeeRequestCommand.getCommand();
         var employee = BathAndCare.from(command.getBathAndCareId(), retrieveEvents(command.getBathAndCareId().value()));
         employee.AddEmployee(command.getBathAndCareId(), command.getEntityId(),command.getEmployeeName());
-
         emit().onResponse(new ResponseEvents(employee.getUncommittedChanges()));
     }
 }

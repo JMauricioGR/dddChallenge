@@ -19,7 +19,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class AddServiceUseCaseTest {
 
@@ -40,9 +39,7 @@ class AddServiceUseCaseTest {
         var aggregateCreated = new BathAndCareCreated(new PetShopName("Best Pet Shop"));
         aggregateCreated.setAggregateRootId("12");
 
-        /*var entityCreated = new ServiceAdded(BathAndCareId.of("12"),ServiceId.of("12"),new ServiceName("Bathing"),new ServiceTime("1 hour"),new Price("$65.000"));
-        entityCreated.setAggregateRootId("12");*/
-        when(repository.getEventsBy("12")).thenReturn(List.of(aggregateCreated/*, entityCreated*/));
+        when(repository.getEventsBy("12")).thenReturn(List.of(aggregateCreated));
 
         List<DomainEvent> events = UseCaseHandler
                 .getInstance()

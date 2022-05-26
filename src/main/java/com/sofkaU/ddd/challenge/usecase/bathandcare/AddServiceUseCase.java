@@ -4,7 +4,6 @@ import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import com.sofkaU.ddd.challenge.domain.bathandcare.BathAndCare;
-import com.sofkaU.ddd.challenge.domain.bathandcare.Service;
 import com.sofkaU.ddd.challenge.domain.bathandcare.commands.AddService;
 
 public class AddServiceUseCase extends UseCase<RequestCommand<AddService>, ResponseEvents> {

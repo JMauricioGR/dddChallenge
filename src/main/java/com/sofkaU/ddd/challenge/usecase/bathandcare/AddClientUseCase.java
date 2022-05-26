@@ -11,8 +11,8 @@ public class AddClientUseCase extends UseCase<RequestCommand<AddClient>, Respons
     public void executeUseCase(RequestCommand<AddClient> addClientRequestCommand) {
 
         var command = addClientRequestCommand.getCommand();
-        var addclient = BathAndCare.from(command.getBathAndCareId(), retrieveEvents(command.getBathAndCareId().value()));
-        addclient.AddClient(command.getBathAndCareId(), command.getClientId(), command.getOwnerName(),command.getPetName());
-        emit().onResponse(new ResponseEvents(addclient.getUncommittedChanges()));
+        var addClient = BathAndCare.from(command.getBathAndCareId(), retrieveEvents(command.getBathAndCareId().value()));
+        addClient.AddClient(command.getBathAndCareId(), command.getClientId(), command.getOwnerName(),command.getPetName());
+        emit().onResponse(new ResponseEvents(addClient.getUncommittedChanges()));
     }
 }

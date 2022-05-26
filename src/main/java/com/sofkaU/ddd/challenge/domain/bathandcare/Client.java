@@ -1,7 +1,6 @@
 package com.sofkaU.ddd.challenge.domain.bathandcare;
 
 import co.com.sofka.domain.generic.Entity;
-import com.sofkaU.ddd.challenge.domain.bathandcare.values.BathAndCareId;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.ClientId;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.OwnerName;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.PetName;
@@ -9,14 +8,11 @@ import com.sofkaU.ddd.challenge.domain.bathandcare.values.PetName;
 import java.util.Objects;
 
 public class Client extends Entity<ClientId> {
-
-    private final BathAndCareId bathAndCareId;
     private OwnerName ownerName;
     private PetName petName;
 
-    public Client(BathAndCareId bathAndCareId, ClientId clientId, OwnerName ownerName, PetName petName){
+    public Client(ClientId clientId, OwnerName ownerName, PetName petName){
         super(clientId);
-        this.bathAndCareId = bathAndCareId;
         this.ownerName = ownerName;
         this.petName = petName;
     }
@@ -36,5 +32,15 @@ public class Client extends Entity<ClientId> {
 
     public PetName petName() {
         return petName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
