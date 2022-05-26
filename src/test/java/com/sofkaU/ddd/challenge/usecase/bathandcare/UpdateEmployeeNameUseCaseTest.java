@@ -5,8 +5,10 @@ import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofkaU.ddd.challenge.domain.bathandcare.commands.AddEmployee;
+import com.sofkaU.ddd.challenge.domain.bathandcare.commands.UpdateEmployeeName;
 import com.sofkaU.ddd.challenge.domain.bathandcare.events.BathAndCareCreated;
 import com.sofkaU.ddd.challenge.domain.bathandcare.events.EmployeeAdded;
+import com.sofkaU.ddd.challenge.domain.bathandcare.events.EmployeeNameUpdated;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.BathAndCareId;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.EmployeeId;
 import com.sofkaU.ddd.challenge.domain.bathandcare.values.EmployeeName;
@@ -28,14 +30,14 @@ class UpdateEmployeeNameUseCaseTest {
     @Mock
     private DomainEventRepository repository;
     @InjectMocks
-    private AddEmployeeUseCase useCase;
+    private UpdateEmployeeNameUseCase useCase;
     @Test
     void updateEmployeeName(){
         var bathAndCareId = BathAndCareId.of("1");
         var employeeId = EmployeeId.of("21");
         var employeename = new EmployeeName("Sergio");
 
-        var command = new AddEmployee(bathAndCareId, employeeId, employeename);
+        var command = new UpdateEmployeeName(bathAndCareId,employeeId,employeename);
 
         var aggregateCreated = new BathAndCareCreated(new PetShopName("Best Pet Shop "));
         aggregateCreated.setAggregateRootId("1");
@@ -50,7 +52,7 @@ class UpdateEmployeeNameUseCaseTest {
                 .orElseThrow()
                 .getDomainEvents();
 
-        EmployeeAdded event = (EmployeeAdded) events.get(0);
+        EmployeeNameUpdated event = (EmployeeNameUpdated) events.get(0);
 
         Assertions.assertEquals(command.getEmployeeName().value(), event.getEmployeeName().value());
     }

@@ -17,6 +17,10 @@ public class EmployeeAdded extends DomainEvent {
         this.employeeName = employeeName;
     }
 
+    public BathAndCareId getBathAndCareId() {
+        return bathAndCareId;
+    }
+
     public EmployeeId getEntityId() {
         return entityId;
     }
